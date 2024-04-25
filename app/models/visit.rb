@@ -2,7 +2,7 @@
 
 # Represents a single page visit
 class Visit < ApplicationRecord
-  scope :recent, -> { joins(:visitor).order(visited_at: :desc).limit(20) }
+  scope :recent, -> { includes(:visitor).order(visited_at: :desc).limit(20) }
 
   belongs_to :visitor
 
