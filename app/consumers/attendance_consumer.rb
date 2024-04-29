@@ -24,7 +24,6 @@ class AttendanceConsumer < ApplicationConsumer
 
   # Consumes the messages by inserting all of them in one go into the DB. We will create this
   def consume
-    puts ">>>>>>>>> consume"
     messages.each do |message|
       payload = message.payload
 
