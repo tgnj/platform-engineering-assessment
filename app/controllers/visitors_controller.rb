@@ -4,12 +4,12 @@
 class VisitorsController < ApplicationController
   # Lists most recent visitors
   def index
-    @visitors = Visitor.order(created_at: :desc)
+    @visitors = Visitor.page(params[:page]).order(created_at: :desc)
   end
 
   # Shows visitor details
   def show
     @visitor = Visitor.find(params[:id])
-    @visits = @visitor.visits.order(visited_at: :desc)
+    @visits = @visitor.visits.order(visited_at: :desc).limit(50)
   end
 end
