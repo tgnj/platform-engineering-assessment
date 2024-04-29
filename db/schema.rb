@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_10_205052) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_29_215142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_10_205052) do
     t.string "site_identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["entity_identifier"], name: "index_attendances_on_entity_identifier"
+    t.index ["sign_in_time"], name: "index_attendances_on_sign_in_time"
+    t.index ["sign_out_time"], name: "index_attendances_on_sign_out_time"
+    t.index ["site_identifier"], name: "index_attendances_on_site_identifier"
   end
 
   create_table "visitors", id: :string, force: :cascade do |t|
