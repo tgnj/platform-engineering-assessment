@@ -38,6 +38,10 @@ class KarafkaApp < Karafka::App
       config(partitions: 2)
       consumer VisitsConsumer
     end
+
+    topic :attendance do
+      consumer AttendanceConsumer
+    end
   end
 end
 

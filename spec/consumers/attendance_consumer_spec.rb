@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.describe VisitsConsumer do
+require 'spec_helper'
+
+RSpec.describe AttendanceConsumer do
   subject(:consumer) { karafka.consumer_for(:attendance) }
+  let(:visitor_id) { SecureRandom.uuid }
   let(:attendances) do
     Array.new(2) do
       {
@@ -14,9 +17,9 @@ RSpec.describe VisitsConsumer do
   end
 
   # Publish two visits of one user
-  before { visits.each { |visit| karafka.produce(visit.to_json) } }
+  before { attendances.each { |attendance| karafka.produce(attendance.to_json) } }
 
   it 'expects to save the attendance' do
-    expect { consumer.consume }.to change(Attendance, :count).by(attendance_events.count)
+    expect { consumer.consume }.to change(Attendance, :count).by(attendances.count)
   end
 end
