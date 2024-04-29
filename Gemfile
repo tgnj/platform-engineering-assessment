@@ -10,7 +10,13 @@ gem 'puma'
 gem 'rails', '~> 7.0'
 gem 'pg'
 
+# added by me:
+gem 'will_paginate'
+
 group :development, :test do
   gem 'karafka-testing'
   gem 'rspec'
+
+  # added by me:
+  gem 'pry'
 end

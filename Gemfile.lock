@@ -78,6 +78,7 @@ GEM
     base64 (0.2.0)
     bigdecimal (3.1.7)
     builder (3.2.4)
+    coderay (1.1.3)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -122,6 +123,7 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
+    method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
     minitest (5.22.3)
@@ -141,6 +143,9 @@ GEM
     nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.6)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     psych (5.1.2)
       stringio
     puma (6.4.2)
@@ -216,6 +221,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (4.0.0)
     zeitwerk (2.6.13)
 
 PLATFORMS
@@ -228,9 +234,11 @@ DEPENDENCIES
   karafka-testing
   karafka-web
   pg
+  pry
   puma
   rails (~> 7.0)
   rspec
+  will_paginate
 
 BUNDLED WITH
    2.5.7
