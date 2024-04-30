@@ -11,7 +11,7 @@ RSpec.describe VisitsConsumer do
       {
         id: SecureRandom.uuid,
         visited_at: Time.zone.now,
-        visitor_id: visitor_id,
+        visitor_id:,
         page_path: '/'
       }
     end

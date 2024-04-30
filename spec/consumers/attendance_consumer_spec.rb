@@ -14,7 +14,7 @@ RSpec.describe AttendanceConsumer do
     end
   end
 
-  describe "event sign_in" do
+  describe 'event sign_in' do
     let(:sign_ins) do
       samples.map { |t| t.merge(sign_in_time: Time.zone.now, event: 'sign_in') }
     end
@@ -25,7 +25,7 @@ RSpec.describe AttendanceConsumer do
     end
   end
 
-  describe "event sign_out" do
+  describe 'event sign_out' do
     let(:sign_outs) do
       samples.map { |t| t.merge(sign_out_time: Time.zone.now, event: 'sign_out') }
     end
@@ -42,5 +42,4 @@ RSpec.describe AttendanceConsumer do
       expect { consumer.consume }.not_to change(Attendance, :count)
     end
   end
-
 end

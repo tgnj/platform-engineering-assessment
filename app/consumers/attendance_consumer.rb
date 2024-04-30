@@ -7,6 +7,7 @@ class AttendanceConsumer < ApplicationConsumer
   def verify_payload(payload)
     return false unless REQUIRED_KEYS.all? { |key| payload.key?(key) }
     return false unless OPTIONAL_KEYS.any? { |key| payload.key?(key) }
+
     true
   end
 

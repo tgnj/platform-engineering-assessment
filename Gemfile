@@ -6,9 +6,9 @@ source 'https://rubygems.org'
 
 gem 'karafka', '>= 2.3.0'
 gem 'karafka-web'
+gem 'pg'
 gem 'puma'
 gem 'rails', '~> 7.0'
-gem 'pg'
 
 # added by me:
 gem 'will_paginate'
@@ -18,8 +18,8 @@ group :development, :test do
   gem 'rspec'
 
   # added by me:
-  gem 'pry'
-  gem 'bundler-audit'
   gem 'brakeman'
+  gem 'bundler-audit'
+  gem 'pry'
   gem 'rubocop'
 end

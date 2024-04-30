@@ -10,10 +10,10 @@ class Visit < ApplicationRecord
     Karafka.producer.produce_async(
       topic: 'visits',
       payload: {
-        id: id,
-        visited_at: visited_at,
-        visitor_id: visitor_id,
-        page_path: page_path
+        id:,
+        visited_at:,
+        visitor_id:,
+        page_path:
       }.to_json
     )
   end
