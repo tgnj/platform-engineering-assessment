@@ -2,6 +2,11 @@
 
 ## FIXED
 
+- ADDED: are able to access postgresql using psql -h 0.0.0.0 -p 5432 -U rails
+  Can switch to the rails db using /c procare_production
+
+- ADDED: dockerfile
+
 - ADDED: add simulate:attendance to test attendance_producer. Probably need to use topic instead of payload#event.
 
 - FIX: fix attendance_consumer test. Caveat: doesn't actually consume the messages. Limitation to testing.
