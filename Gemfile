@@ -16,6 +16,7 @@ gem 'will_paginate'
 group :development, :test do
   gem 'karafka-testing'
   gem 'rspec'
+  gem 'bundler-audit'
 
   # added by me:
   gem 'pry'
