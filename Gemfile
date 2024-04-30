@@ -9,6 +9,7 @@ gem 'karafka-web'
 gem 'pg'
 gem 'puma'
 gem 'rails', '~> 7.0'
+gem 'bootsnap', require: false
 
 # added by me:
 gem 'will_paginate'
