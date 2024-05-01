@@ -2,6 +2,8 @@
 
 ## FIXED
 
+- ADDED: add Github Actions workflow
+
 - ADDED: are able to access postgresql using psql -h 0.0.0.0 -p 5432 -U rails
   Can switch to the rails db using /c procare_production
 
