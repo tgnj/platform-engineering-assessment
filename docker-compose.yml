@@ -12,21 +12,20 @@ services:
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092
       KAFKA_BROKER_ID: 1
       KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
       ALLOW_PLAINTEXT_LISTENER: 'yes'
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
       KARAFKA_ADVERTISED_HOST_NAME: 'kafka'
   db:
-    image: postgres:16-bookworm
-    restart: always
-    user: postgres
+    image: postgres:14.1-alpine
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: rails
-      POSTGRES_PASSWORD: password
+      - POSTGRES_DB=procare_development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     ports:
       - "5432:5432"
   web:
@@ -34,8 +33,12 @@ services:
     ports:
       - 3000:3000
     environment:
-      - DATABASE_URL=postgres://rails:password@db:5432/procare_production
-      - RAILS_ENV=production
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - RAILS_ENV=development
+      - KARAFKA_BOOTSTRAP_SERVERS=kafka:9092
     develop:
       watch:
         - action: sync
@@ -49,11 +52,15 @@ services:
   consumer:
     build: .
     environment:
-      - DATABASE_URL=postgres://rails:password@db:5432/procare_production
-      - RAILS_ENV=production
+      # - DATABASE_URL=postgres://rails:password@db:5432/procare_development
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - RAILS_ENV=development
+      - KARAFKA_BOOTSTRAP_SERVERS=kafka:9092
     command: bundle exec karafka server
     depends_on:
-      - kafka
-      - db
+      - web
 volumes:
   db-data:
