@@ -3,7 +3,7 @@
 # Karafka app object
 class KarafkaApp < Karafka::App
   setup do |config|
-    config.kafka = { 'bootstrap.servers': 'kafka:9092' }
+    config.kafka = { 'bootstrap.servers': ENV['KARAFKA_BOOTSTRAP_SERVERS'] }
     config.client_id = 'example_app'
     config.concurrency = 2
     config.max_wait_time = 500 # 0.5 second
