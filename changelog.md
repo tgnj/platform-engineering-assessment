@@ -2,6 +2,8 @@
 
 ## FIXED
 
+- ADDED: docker compose can now stand up kafka db web and consumer. Shouldn't kafka work with zookeeper?
+
 - ADDED: add Github Actions workflow
 
 - ADDED: are able to access postgresql using psql -h 0.0.0.0 -p 5432 -U rails
@@ -26,14 +28,10 @@
 
 ## KNOWN ISSUES
 
+- For local development, need to switch from kafka:9092 to localhost:9092.
+
 - We don't really need to include the visitors because all is referenced by visitor_id anyway.
 
 ## PENDING ISSUES
 
 - TODO: was going to cache Visit#recent but it is pointless atm.
-
-## TODO
-
-- Dockerfile
-- CI/CD using Github Actions
-- Terraform
