@@ -49,7 +49,6 @@ services:
       #
       # for local development
       # - KARAFKA_BOOTSTRAP_SERVERS=localhost:9092
-    command: bin/rails server -b '0.0.0.0'
     develop:
       watch:
         - action: sync
