@@ -2,6 +2,8 @@
 
 ## FIXED
 
+- FIX: add batch update to AttendanceConsumer
+
 - ADDED: Makefile to quickly setup local development environment
 
 - FIX: permission issue with rails:rails resolved.
@@ -39,3 +41,5 @@
 ## PENDING ISSUES
 
 - TODO: was going to cache Visit#recent but it is pointless atm.
+
+- Table partitioning
