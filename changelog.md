@@ -2,6 +2,10 @@
 
 ## FIXED
 
+- ADDED: Makefile to quickly setup local development environment
+
+- FIX: permission issue with rails:rails resolved.
+
 - ADDED: docker compose can now stand up kafka db web and consumer. Shouldn't kafka work with zookeeper?
 
 - ADDED: add Github Actions workflow
