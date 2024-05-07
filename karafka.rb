@@ -39,9 +39,17 @@ class KarafkaApp < Karafka::App
       consumer VisitsConsumer
     end
 
-    topic :attendance do
+    topic :sign_in do
       consumer AttendanceConsumer
     end
+
+    topic :sign_out do
+      consumer AttendanceConsumer
+    end
+
+    # topic :attendance do
+    #   consumer AttendanceConsumer
+    # end
   end
 end
 

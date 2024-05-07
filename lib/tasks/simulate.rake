@@ -8,18 +8,18 @@ namespace :simulate do
       }
     end
 
-    sign_ins = sample.map { |t| t.merge(sign_in_time: Time.zone.now, event: 'sign_in') }
+    sign_ins = sample.map { |t| t.merge(sign_in_time: Time.zone.now) }
     sign_ins.each do |sign_in|
       Karafka.producer.produce_async(
-        topic: 'attendance',
+        topic: 'sign_in',
         payload: sign_in.to_json
       )
     end
 
-    sign_outs = sample.map { |t| t.merge(sign_out_time: Time.zone.now + 1.hour, event: 'sign_out') }
+    sign_outs = sample.map { |t| t.merge(sign_out_time: Time.zone.now + 1.hour) }
     sign_outs.each do |sign_out|
       Karafka.producer.produce_async(
-        topic: 'attendance',
+        topic: 'sign_out',
         payload: sign_out.to_json
       )
     end

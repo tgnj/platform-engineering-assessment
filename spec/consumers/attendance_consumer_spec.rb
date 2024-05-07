@@ -3,8 +3,6 @@
 require 'spec_helper'
 
 RSpec.describe AttendanceConsumer do
-  subject(:consumer) { karafka.consumer_for(:attendance) }
-
   let(:samples) do
     Array.new(4) do
       {
@@ -15,6 +13,8 @@ RSpec.describe AttendanceConsumer do
   end
 
   describe 'event sign_in' do
+    let(:consumer) { karafka.consumer_for(:sign_in) }
+
     let(:sign_ins) do
       samples.map { |t| t.merge(sign_in_time: Time.zone.now, event: 'sign_in') }
     end
@@ -26,6 +26,8 @@ RSpec.describe AttendanceConsumer do
   end
 
   describe 'event sign_out' do
+    let(:consumer) { karafka.consumer_for(:sign_out) }
+
     let(:sign_outs) do
       samples.map { |t| t.merge(sign_out_time: Time.zone.now, event: 'sign_out') }
     end
