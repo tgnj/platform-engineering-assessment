@@ -18,7 +18,7 @@ namespace :simulate do
 
     sleep 5
 
-    sign_outs = sample.map { |t| t.merge(sign_out_time: Time.zone.now + 1.hour) }
+    sign_outs = sample.map { |t| t.merge(sign_out_time: Time.zone.now + rand(1..100).minutes) }
     sign_outs.each do |sign_out|
       Karafka.producer.produce_async(
         topic: 'sign_out',
